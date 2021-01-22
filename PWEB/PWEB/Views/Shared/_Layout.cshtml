@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/ico" href="~/Img/Icon WebSite/car.png">
+
+    <title>CarRenting</title>
+
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Content/css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Index", "Home")">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Car Renting</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "Home")">
+                    <i class="fas fa-fw fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+
+            @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
+            {
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwoUser" aria-expanded="true" aria-controls="collapseTwoUser">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Veiculos</span>
+                    </a>
+                    <div id="collapseTwoUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Menu veiculos:</h6>
+                            <a class="collapse-item" href="@Url.Action("Index", "Veiculos")">Lista de Veículos</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseReservas" aria-expanded="true" aria-controls="collapseReservas">
+                        <i class="fas fa-th-list"></i>
+                        <span>Reservas</span>
+                    </a>
+                    <div id="collapseReservas" class="collapse" aria-labelledby="collapseReservas" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Menu reservas:</h6>
+                            <a class="collapse-item" href="@Url.Action("Index", "Reservas")">Lista de Reservas</a>
+                            <a class="collapse-item" href="@Url.Action("Create", "Reservas")">Fazer Reserva</a>
+                        </div>
+                    </div>
+                </li>
+            }
+
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Worker"))
+            {
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Veiculos</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Menu veiculos:</h6>
+                            <a class="collapse-item" href="@Url.Action("Index", "Veiculos")">Lista de Veículos</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseReservas" aria-expanded="true" aria-controls="collapseReservas">
+                        <i class="fas fa-th-list"></i>
+                        <span>Reservas</span>
+                    </a>
+                    <div id="collapseReservas" class="collapse" aria-labelledby="collapseReservas" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Menu reservas:</h6>
+                            <a class="collapse-item" href="@Url.Action("Index", "Reservas")">Lista de Reservas</a>
+                            <a class="collapse-item" href="@Url.Action("Create", "Reservas")">Fazer Reserva</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseEntregas" aria-expanded="true" aria-controls="collapseEntregas">
+                        <i class="fas fa-check"></i>
+                        <span>Entregas</span>
+                    </a>
+                    <div id="collapseEntregas" class="collapse" aria-labelledby="collapseEntregas" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Menu Entregas:</h6>
+                            <a class="collapse-item" href="@Url.Action("Index", "Entregas")">Lista de Entregas</a>
+                        </div>
+                    </div>
+                </li>
+
+            }
+
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Company"))
+            {
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Veiculos</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Menu veiculos:</h6>
+                            <a class="collapse-item" href="@Url.Action("Index", "Veiculos")">Lista de Veículos</a>
+                            <a class="collapse-item" href="@Url.Action("", "Veiculos")">Detalhes</a>
+                            <a class="collapse-item" href="@Url.Action("Create", "Veiculos")">Adicionar Veículo</a>
+                            <a class="collapse-item" href="@Url.Action("", "Veiculos")">Editar</a>
+                            <a class="collapse-item" href="@Url.Action("", "Veiculos")">Apagar</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapsefuncionarios" aria-expanded="true" aria-controls="collapsefuncionarios">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Gestao Funcionarios</span>
+                    </a>
+                    <div id="collapsefuncionarios" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Menu veiculos:</h6>
+                            <a class="collapse-item" href="@Url.Action("Index", "Funcionarios")">Lista de Veículos</a>
+                            <a class="collapse-item" href="@Url.Action("RegisterFuncionario","Funcionarios")">Registar</a>
+                        </div>
+                    </div>
+                </li>
+            }
+
+            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <!-- Nav Item - Utilities Collapse Menu -->
+            
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseGestao" aria-expanded="true" aria-controls="collapseReservas">
+                        <i class="fas fa-th-list"></i>
+                        <span>Gerir Utilizadores</span>
+                    </a>
+                    <div id="collapseGestao" class="collapse" aria-labelledby="collapseGestao" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Menu Gestão:</h6>
+                            <a class="collapse-item" href="@Url.Action("Index", "UsersAdmin")">Gerir Utilizadores</a>
+                            
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVeiculos" aria-expanded="true" aria-controls="collapseVeiculos">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Veiculos</span>
+                    </a>
+                    <div id="collapseVeiculos" class="collapse" aria-labelledby="headingVeiculos" data-parent="#accordionSidebar" style="">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Menu veiculos:</h6>
+                            <a class="collapse-item" href="@Url.Action("Index", "Veiculos")">Lista de Veiculos</a>
+                            <a class="collapse-item" href="@Url.Action("Create", "Veiculos")">Adicionar Veículo</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseCategorias" aria-expanded="true" aria-controls="collapseCategorias">
+                        <i class="fas fa-certificate"></i>
+                        <span>Categorias</span>
+                    </a>
+                    <div id="collapseCategorias" class="collapse" aria-labelledby="collapseCategorias" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Menu categorias:</h6>
+                            <a class="collapse-item" href="@Url.Action("Index", "Categorias")">Lista de Categorias</a>
+                            <a class="collapse-item" href="@Url.Action("Create", "Categorias")">Adicionar Categoria</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseEntregas" aria-expanded="true" aria-controls="collapseEntregas">
+                        <i class="fas fa-key"></i>
+                        <span>Entregas</span>
+                    </a>
+                    <div id="collapseEntregas" class="collapse" aria-labelledby="collapseEntregas" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Menu entregas:</h6>
+                            <a class="collapse-item" href="@Url.Action("Index", "Entregas")">Lista de Entregas</a>
+                            <a class="collapse-item" href="@Url.Action("Create", "Entregas")">Adicionar Entrega</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseReservas" aria-expanded="true" aria-controls="collapseReservas">
+                        <i class="fas fa-th-list"></i>
+                        <span>Reservas</span>
+                    </a>
+                    <div id="collapseReservas" class="collapse" aria-labelledby="collapseReservas" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Menu reservas:</h6>
+                            <a class="collapse-item" href="@Url.Action("Index", "Reservas")">Lista de Reservas</a>
+                            <a class="collapse-item" href="@Url.Action("Create", "Reservas")">Adicionar Entrega</a>
+                        </div>
+                    </div>
+                </li>
+            } @*Chaveta do user_role_Admin**@
+
+            @if (User.Identity.IsAuthenticated == false)
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVeiculos" aria-expanded="true" aria-controls="collapseVeiculos">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Veiculos</span>
+                    </a>
+                    <div id="collapseVeiculos" class="collapse" aria-labelledby="headingVeiculos" data-parent="#accordionSidebar" style="">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Menu veiculos:</h6>
+                            <a class="collapse-item" href="@Url.Action("Index", "Veiculos")">Catálogo de Veiculos</a>
+
+                        </div>
+                    </div>
+                </li>
+
+            }
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLogin" aria-expanded="true" aria-controls="collapseLogin">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Conta</span>
+                </a>
+                <div id="collapseLogin" class="collapse" data-target=".navbar-collapse" aria-labelledby="headingLogin" data-parent="#accordionSidebar" style="">
+                    <div> @Html.Partial("_LoginPartial")</div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+        </ul>
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <div class="container body-content">
+                    @RenderBody()
+
+                    <!-- Footer -->
+                    <footer class="sticky-footer bg-white">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>PWEB &copy; Cláudio Figueiredo & Filipe Silva @DateTime.Now.Year</span>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+        </div>
+        <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+    </div>
+
+    <script>
+        $(document).on('click', '.navbar-collapse.in', function (e) {
+            if ($(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle') {
+                $(this).collapse('hide');
+            }
+        });
+    </script>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Content/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/Content/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/Content/js/demo/chart-area-demo.js"></script>
+    <script src="~/Content/js/demo/chart-pie-demo.js"></script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<PWEB.Models.Entrega>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeUser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_Entregai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data_Entregaf)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.IsEntregue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsRecebido)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_Entregai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_Entregaf)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.IsEntregue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsRecebido)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id_Entrega })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,66 @@
+﻿@model PWEB.Models.Veiculo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Veiculo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Categorias.NomeCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categorias.NomeCategoria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome_veiculo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome_veiculo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kilometros)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kilometros)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Defeitos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Defeitos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_veiculo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

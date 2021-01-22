@@ -1,0 +1,58 @@
+﻿@model PWEB.Models.Reserva
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reserva</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Veiculos.Nome_veiculo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Veiculos.Nome_veiculo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Datar_i)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Datar_i)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Datar_f)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Datar_f)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecoTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecoTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disponivel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disponivel)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_reserva }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

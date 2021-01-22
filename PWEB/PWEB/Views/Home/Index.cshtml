@@ -1,0 +1,122 @@
+﻿@using System.Web.UI.HtmlControls
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<script type="text/javascript">
+    document.title = '@ViewBag.Title';
+</script>
+
+<style>
+    .image-wrapper {
+        float: left;
+        padding: 1%;
+        width: 50%;
+        height: auto;
+    }
+
+        .image-wrapper:nth-child(even) {
+            padding-left: 5px;
+        }
+
+        .image-wrapper:nth-child(odd) {
+            padding-right: 5px;
+        }
+
+        .image-wrapper > img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-wrapper > span {
+            display: inline-block;
+        }
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+
+@using Microsoft.AspNet.Identity
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:1%;margin-right:1%">
+    <!-- Photo grid (modal) -->
+    <div class="w3-container" id="showcase">
+        <h1 class="w3-xxxlarge" style="color: darkturquoise"><b>Bem vindo @User.Identity.GetUserName() - @ViewBag.Role</b></h1>
+        <hr style="width:10%;border:5px solid darkturquoise" class="w3-round">
+    </div>
+
+    <div class="image-wrapper">
+        <img src="~/Img/Index/carro1.jpg" />
+    </div>
+
+    <div class="image-wrapper">
+        <img src="~/Img/Index/carro3.jpg" />
+    </div>
+
+    <div class="image-wrapper">
+        <img src="~/Img/Index/carro2.jpg" />
+    </div>
+
+    <div class="image-wrapper">
+        <img src="~/Img/Index/carro4.jpg" />
+    </div>
+
+    <!-- Services -->
+    <div class="w3-container" id="services" style="margin-top:75px">
+        <h1 class="w3-xxxlarge" style="color: darkturquoise"> <b>Apresentação</b> </h1>
+        <hr style="width:50px;border:5px solid darkturquoise" class="w3-round">
+        <p> We are a rent a car service that focus on what's best for your travels and what's best for you!</p>
+    </div>
+
+    <!-- Designers -->
+    <div class="w3-container" id="designers" style="margin-top:75px">
+        <h1 class="w3-xxxlarge" style="color: darkturquoise"> <b>CEO</b> </h1>
+        <hr style="width:50px;border:5px solid darkturquoise" class="w3-round">
+        <p> The best team in the world.</p>
+    </div>
+
+    <!-- The Team -->
+    <div class="w3-row-padding w3-grayscale">
+        <div class="w3-col m4 w3-margin-bottom">
+            <div class="w3-light-grey">
+                <img src="~/Img/Index/Claudio.jpg" alt="Claudio" style="width:100%">
+                <div class="w3-container">
+                    <h3> Claudio Figueiredo</h3>
+                </div>
+            </div>
+        </div>
+        <div class="w3-col m4 w3-margin-bottom">
+            <div class="w3-light-grey">
+                <img src="~/Img/Index/Filipe.jpg" alt="Filipe" style="width:100%">
+                <div class="w3-container">
+                    <h3> Filipe Silva</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contact -->
+    @*<div class="w3-container" id="contact" style="margin-top:75px">
+        <h1 class="w3-xxxlarge" style="color: darkturquoise"> <b> Contact.</b> </h1>
+        <hr style="width:50px;border:5px solid darkturquoise" class="w3-round">
+        <p> Alguma duvida contecte-nos via email preenchendo o seguinte formulário:</p>
+        <form action="/action_page.php" target="_blank">
+            <div class="w3-section">
+                <label> Nome</label>
+                <input class="w3-input w3-border" type="text" name="Name" required>
+            </div>
+            <div class="w3-section">
+                <label> Email</label>
+                <input class="w3-input w3-border" type="text" name="Email" required>
+            </div>
+            <div class="w3-section">
+                <label> Mensagem</label>
+                <input class="w3-input w3-border" type="text" name="Message" required>
+            </div>
+            <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom"> Enviar mensagem</button>
+        </form>
+    </div>*@
+    <!-- End page content -->
+</div>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<PWEB.Models.Reserva>
+
+@{ ViewBag.Title = "Index"; }
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Veiculos.Nome_veiculo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datar_i)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datar_f)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecoTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Disponivel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_user)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Veiculos.Nome_veiculo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Datar_i)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Datar_f)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PrecoTotal)
+    </td>
+    @if (User.Identity.IsAuthenticated && (User.IsInRole("Company") || User.IsInRole("Admin") || User.IsInRole("Worker")))
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.Disponivel)
+        </td>
+    }
+    <td>
+        @Html.DisplayFor(modelItem => item.Id_user)
+    </td>
+
+    @if (User.Identity.IsAuthenticated && (User.IsInRole("Company") || User.IsInRole("Admin") || User.IsInRole("Worker")))
+    {
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id_reserva }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id_reserva }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id_reserva })
+        </td>
+    }
+</tr>}
+
+</table>

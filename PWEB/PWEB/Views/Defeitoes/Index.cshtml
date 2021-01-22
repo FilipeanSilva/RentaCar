@@ -1,0 +1,91 @@
+﻿@model PWEB.Models.Defeito
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Verificacao de defeitos</h2>
+
+@using (Html.BeginForm("Index", "Defeitoes", FormMethod.Post, new {enctype = "multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id_reserva)
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-horizontal">
+        <table class="table">
+            <tr>
+                <th>
+                    Veiculo
+                </th>
+                <th>
+                    Cliente
+                </th>
+                <th></th>
+            </tr>
+
+            <tr>
+                <td>
+                    @ViewBag.nomeCarro
+                </td>
+                <td>
+                    @ViewBag.nomeCliente
+                </td>
+            </tr>
+
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DanosExteriores)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DanosInteriores)
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="col-md-10">
+                        <input type="file" name="files"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="col-md-10">
+                        <input type="file" name="files"/>
+                    </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <div class="col-md-10">
+                        <input type="text" name="kmFinais" id="kmFinais" value="@ViewBag.txtKilometros"/>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+
+        <tr>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default"/>
+                </div>
+            </div>
+        </tr>
+    </div>
+}
+<script>
+    $('input:kmFinais').click(
+        function(){
+            $(this).val('');
+        })
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
